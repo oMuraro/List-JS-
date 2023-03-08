@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript</title>
+</head>
+<body>
+    <h1>Hello World!</h1><br><br>
+
+    <h1>Lista Alunos:</h1>
+    <input type="text" id="student-text">
+    <button id="add-student"> Adicionar </button>
+    <ul id="students-list"> 
+        <!-- <li id="student1"> Lucas </li> <button id="btn-removeone1"> Remover</button>
+        <li id="student2"> Matheus </li> <button id="btn-removeone2"> Remover </button>
+        <li id="student3"> Felipe </li> <button id="btn-removeone3"> Remover</button> -->
+    </ul>
+
+<button id="btn-remove"> Remover Alunos </button>
+<button id="btn-add"> Recolocar Alunos </button>
+
+    <script>
+        let alunos = [
+            "Lucas",
+            "Matheus",
+            "Felipe"
+        ];
+
+        const inputStudent = document.querySelector("#student-text");
+        const add_Student = document.querySelector("#add-Student");
+
+        // const btnRemove = document.querySelector("#btn-remove");
+        // const btnAdd = document.querySelector("#btn-add");
+        // const btnRemoveOne1 = document.querySelector("#btn-removeone1")
+        // const btnRemoveOne2 = document.querySelector("#btn-removeone2")
+        // const btnRemoveOne3 = document.querySelector("#btn-removeone3")
+        // const student1 = document.querySelector("#student1");
+        // const student2 = document.querySelector("#student2");
+        // const student3 = document.querySelector("#student3");
+
+        // const removeOne1 = () => {
+        //     student1.remove();
+        //     btnRemoveOne1.remove();
+        // }
+
+        // const removeOne2 = () => {
+        //     student2.remove();
+        //     btnRemoveOne2.remove();
+        // }
+
+        // const removeOne3 = () => {
+        //     student3.remove();
+        //     btnRemoveOne3.remove();
+        // }
+
+        // const removeAll = () => {
+        //     const list = document.querySelector("#students-list");
+        //     list.innerHTML = "";
+        // }
+        
+        // const add = () => {
+        //     const list = document.querySelector("#students-list");
+        //     let html = null;
+        //     if (list.innerHTML == "")
+        //     {
+        //     alunos.forEach(aluno => {
+        //         const item = document.createElement("li"); //Cria o elemento <li>
+        //         item.innerHTML = aluno; //add o nome do elemento <li> aluno </li>
+        //         list.appendChild(item) //add o <li> no <ul>
+        //     });
+        // }
+        // }
+
+        // btnRemove.addEventListener("click", removeAll);
+        // btnAdd.addEventListener("click", add);
+        // btnRemoveOne1.addEventListener("click", removeOne1);
+        // btnRemoveOne2.addEventListener("click", removeOne2);
+        // btnRemoveOne3.addEventListener("click", removeOne3);
+        add_Student.addEventListener("click", addStudent);
+
+        const criarElemento = (aluno) => {
+            const list = document.querySelector("#students-list");
+
+            let id = Math.floor(Math.random() * 9999 + 1);
+            const item = document.createElement("li");
+            const button = document.createElement("button");
+
+            item.setAttribute("id", "aluno"+id)
+            button.setAttribute("class", "aluno-"+id)
+            button.addEventListener("click", () => removerAlunos(id))
+            item.innerHTML = aluno;
+            button.innerHTML = "Remover";
+            list.appendChild(item);
+            list.appendChild(button);
+        }
+
+        const addAluno = () => {
+            criarElemento(add_Student.value);
+        }
+    </script>
+</body>
+</html>
